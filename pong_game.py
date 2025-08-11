@@ -57,7 +57,7 @@ class Ball(arcade.Sprite):
         self.change_x = random.choice([-BALL_SPEED, BALL_SPEED])
         self.change_y = random.choice([-BALL_SPEED, BALL_SPEED])
     
-    def update(self):
+    def update(self, delta_time=1/60):
         """Update ball position and handle wall bouncing"""
         self.center_x += self.change_x
         self.center_y += self.change_y
@@ -82,7 +82,7 @@ class Paddle(arcade.Sprite):
         
         self.change_y = 0
     
-    def update(self):
+    def update(self, delta_time=1/60):
         """Update paddle position with boundary checking"""
         self.center_y += self.change_y
         
