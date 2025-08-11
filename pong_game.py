@@ -47,8 +47,8 @@ class Ball(arcade.Sprite):
     def __init__(self):
         super().__init__()
         
-        # Create a simple white square for the ball
-        texture = arcade.Texture.create_filled("ball", (BALL_SIZE, BALL_SIZE), WHITE)
+        # Create a simple white square for the ball using make_soft_square_texture
+        texture = arcade.make_soft_square_texture(BALL_SIZE, WHITE)
         self.texture = texture
         
         # Set initial position and velocity
@@ -73,9 +73,12 @@ class Paddle(arcade.Sprite):
     def __init__(self, color=WHITE):
         super().__init__()
         
-        # Create paddle texture
-        texture = arcade.Texture.create_filled("paddle", (PADDLE_WIDTH, PADDLE_HEIGHT), color)
+        # Create paddle texture using make_soft_square_texture
+        texture = arcade.make_soft_square_texture(PADDLE_WIDTH, color, outer_alpha=255)
         self.texture = texture
+        
+        # Scale the texture to get the right height
+        self.scale = PADDLE_HEIGHT / PADDLE_WIDTH
         
         self.change_y = 0
     
@@ -141,11 +144,12 @@ class PongGame(arcade.Window):
         
         # Create simple beep sounds
         try:
-            # These will create simple tone sounds
-            self.hit_sound = arcade.Sound(":resources:sounds/hit1.wav")
-            self.score_sound = arcade.Sound(":resources:sounds/coin1.wav")
+            # These will create simple tone sounds if available
+            self.hit_sound = arcade.load_sound(":resources:sounds/hit1.wav")
+            self.score_sound = arcade.load_sound(":resources:sounds/coin1.wav")
         except:
             # If sounds don't load, we'll handle it gracefully
+            print("Sound files not found - game will run without audio")
             self.hit_sound = None
             self.score_sound = None
     
