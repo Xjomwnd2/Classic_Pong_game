@@ -14,6 +14,9 @@ My purpose in developing this software was to gain hands-on experience with game
 For this project, I utilized Visual Studio Code as my primary development environment, taking advantage of its excellent Python extension support and integrated debugging capabilities. The built-in terminal allowed me to easily manage package installations and run the game during development iterations. I also used Git for version control to track my progress and maintain clean code history throughout the development process.
 The game is written entirely in Python 3.9, leveraging the Arcade library as the core game framework. Arcade provides a modern, easy-to-learn Python framework for crafting games with 2D graphics and is particularly well-suited for learning game development concepts. The library handles sprite management, collision detection, sound playback, and window management, allowing me to focus on game logic rather than low-level graphics programming. Additionally, I used Python's built-in random module for generating unpredictable ball directions and the math concepts built into Arcade for collision physics calculations.
 
+# Running the game: 
+python pong_game.py
+
 # Useful Websites
 
 {Make a list of websites that you found helpful in this project}
